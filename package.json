@@ -1,0 +1,12 @@
+{
+  "name": "scan-php-files",
+  "version": "1.0.0",
+  "description": "A simple utility to scan php files.",
+  "main": "findUnionTypes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node findUnionTypes.js --format=json --directory=./src"
+  },
+  "author": "Miguel Gasca <mgascam>",
+  "license": "ISC"
+}
