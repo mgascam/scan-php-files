@@ -159,4 +159,12 @@ function main() {
     }
 }
 
-main();
+// Export the functions for testing
+module.exports = {
+    getPhpFiles,
+    findMatchesInFile,
+    generateJsonOutput,
+    generateHtmlOutput,
+    getUniqueFilename,
+    main
+};
