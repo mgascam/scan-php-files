@@ -104,6 +104,7 @@ function main() {
     const args = process.argv.slice(2);
     const formatArg = args.find(arg => arg.startsWith('--format='));
     const directoryArg = args.find(arg => arg.startsWith('--directory='));
+    const patternArg = args.find(arg => arg.startsWith('--pattern='));
 
     // Determine the output format
     const format = formatArg === '--format=json' ? 'json'
@@ -111,7 +112,7 @@ function main() {
             : null;
 
     if (!format) {
-        console.error('Usage: node findUnionTypes.js --format=json|html --directory=PATH');
+        console.error('Usage: node findUnionTypes.js --format=json|html --directory=PATH --pattern=REGEX');
         process.exit(1);
     }
 
@@ -119,7 +120,7 @@ function main() {
     const directory = directoryArg ? directoryArg.replace('--directory=', '') : null;
 
     if (!directory) {
-        console.error('Usage: node findUnionTypes.js --format=json|html --directory=PATH');
+        console.error('Usage: node findUnionTypes.js --format=json|html --directory=PATH --pattern=REGEX');
         process.exit(1);
     }
 
@@ -129,8 +130,11 @@ function main() {
         process.exit(1);
     }
 
-    // Regex to match @return annotations with at least three union types
-    const returnRegex = /@return.*[^\s]+\|[^\s]+\|[^\s]+/;
+    // Get the regex pattern
+    const pattern = patternArg ? patternArg.replace('--pattern=', '') : '@return.*[^\s]+\|[^\s]+\|[^\s]+';
+
+    // Create the regex object with the pattern
+    const returnRegex = new RegExp(pattern);
 
     // Scan for PHP files and matches
     const phpFiles = getPhpFiles(directory);
