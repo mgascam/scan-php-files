@@ -35,7 +35,6 @@ describe('findUnionTypes', () => {
 
             expect(result).toEqual(['/test/file1.php', '/test/subdir/file3.php']);
         });
-    });
 
     describe('findMatchesInFile', () => {
         it('should find matching lines with line numbers', () => {
