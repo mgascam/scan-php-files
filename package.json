@@ -4,9 +4,13 @@
   "description": "A simple utility to scan php files.",
   "main": "findUnionTypes.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "start": "node findUnionTypes.js --format=json --directory=./src"
   },
   "author": "Miguel Gasca <mgascam>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
 }
